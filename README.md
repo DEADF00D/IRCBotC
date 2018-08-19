@@ -104,6 +104,7 @@ host="127.0.0.1"
   - ip: remote server ip to connect.
   - port: remote irc port.
   - type: type of ip address, can be ADDR_IPV4 or ADDR_IPV6.
+  <br/>
 ```int IRC_GetIPVersion(char *src)``` \
   **Return ip address version of str.**
   <br/>
