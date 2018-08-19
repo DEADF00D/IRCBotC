@@ -105,10 +105,10 @@ host="127.0.0.1"
   - port: remote irc port.
   - type: type of ip address, can be ADDR_IPV4 or ADDR_IPV6.
   <br/>
-```int IRC_GetIPVersion(char *src)``` \
+```int IRC_GetIPVersion(char *src)```
   **Return ip address version of str.**
   <br/>
-```int IRC_ResolveHostname(char *host, char *addrstr)``` \
+```int IRC_ResolveHostname(char *host, char *addrstr)```
   **Resolve host and strcpy it in addrstr.**
   <br/>
 
