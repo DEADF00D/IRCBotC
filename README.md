@@ -60,46 +60,57 @@ host="127.0.0.1"
   **Connect to remote irc server.**
   - host: Remote host to connect, can be a dns, and ipv4 address or a ipv6 address.
   - port: Remote port to connect.
+  <br/>
 
 ```int IRC_Auth(IRC_Instance *irc, char *nick, char *realname)``` \
   **Authenticate your bot to irc server.**
   - nick: Nick of your bot
   - realname: Realname of your bot
+  <br/>
 
 ```int IRC_GetPacket(IRC_Instance *irc, IRC_Packet *p)``` \
   **Get next packet and parse it in p.**
   - p: IRC_Packet pointer structure, packet parsing will be stored in.
+  <br/>
 
 ```int IRC_Query(IRC_Instance *irc, char *pname, char *params, char *body);``` \
   **Parse and send query to irc server.**
   - pname: Name of query (ex: PRIVMSG, JOIN, PART)
   - params: Parameters of query (ex: #chan)
   - body: Body of query
+  <br/>
 
 ```int IRC_PrivMSG(IRC_Instance *irc, char *target, char *format, ...);``` \
   **Parse and send privmsg with a printf like function.**
   - target: Nick or Channel to send the privmsg.
   - format: printf like format (ex: "hello %s, you are %d years old.")
+  <br/>
 
 ```int IRC_ParseHost(IRC_Host *irch, char *packet)``` \
   **Parse an host like ```deadfood!deadfood@127.0.0.1``` into irch.**
   - irch: IRC_Host structure pointer, where parsing will be stored.
   - packet: Host to paste.
+  <br/>
 
 ### Internal/Low level functions:
 ```int IRC_RecvPacket(IRC_Instance *irc, char **packet)``` \
-  **Receive the packet and store it in packet**
+  **Receive the packet and store it in packet** \
+  <br/>
 ```int IRC_SendPacket(IRC_Instance *irc, char *packet)``` \
-  **Send the packet stored in packet**
+  **Send the packet stored in packet** \
+  <br/>
 ```int IRC_ConnectTo(IRC_Instance *irc, char *ip, int port, IRC_AddrType type);``` \
   **Connect to remote host but unlike ```IRC_Connect()``` it support only Ipv4 and Ipv6 ip addr.**
   - ip: remote server ip to connect.
   - port: remote irc port.
   - type: type of ip address, can be ADDR_IPV4 or ADDR_IPV6.
+  <br/>
 ```int IRC_GetIPVersion(char *src)``` \
-  **Return ip address version of str.**
+  **Return ip address version of str.** \
+  <br/>
 ```int IRC_ResolveHostname(char *host, char *addrstr)``` \
-  **Resolve host and strcpy it in addrstr.**
+  **Resolve host and strcpy it in addrstr.** \
+  <br/>
 
 ## example.c:
 ```
