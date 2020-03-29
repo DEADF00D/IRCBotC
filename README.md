@@ -1,11 +1,11 @@
 # IRCBotC
 IRCBotC is a very lightweight library written in C to build IRC Bots.
-
+  
 ## Documentation:
-
+  
 You must create a IRC_Instance structure at the biggining of your program.  
 It will be needed in a lot of IRCBotC functions, and it store all connection informations.  
-
+  
 ```
 struct IRC_Instance{
     int Socket;
@@ -14,7 +14,7 @@ struct IRC_Instance{
     struct sockaddr_in6 AddrIpv6;
 }
 ```
-
+  
 ### Structures:
 
 #### IRC_Packet:
@@ -36,7 +36,7 @@ head[2]="*"
 head_count=3
 body="*** Looking up your hostname..."
 ```
-
+  
 #### IRC_Host:
 
 ```
@@ -44,7 +44,7 @@ typedef struct{
     char *nick, *user, *host;
 } IRC_Host;
 ```
-
+  
 Parse a hostname like:
 ```
 deadfood!deadfood@127.0.0.1
@@ -55,9 +55,9 @@ nick="deadfood"
 user="deadfood"
 host="127.0.0.1"
 ```
-
+  
 ### High level functions:
-```int IRC_Connect(IRC_Instance *irc, char *host, int port)```
+```int IRC_Connect(IRC_Instance *irc, char *host, int port)```  
   **Connect to remote irc server.**
   - host: Remote host to connect, can be a dns, and ipv4 address or a ipv6 address.
   - port: Remote port to connect
@@ -66,36 +66,32 @@ host="127.0.0.1"
   **Authenticate your bot to irc server.**
   - nick: Nick of your bot
   - realname: Realname of your bot
-  <br/>
-
+  
 ```int IRC_GetPacket(IRC_Instance *irc, IRC_Packet *p)```  
   **Get next packet and parse it in p.**  
   - p: IRC_Packet pointer structure, packet parsing will be stored in.  
-
+  
 ```int IRC_Query(IRC_Instance *irc, char *pname, char *params, char *body);```  
   **Parse and send query to irc server.**  
   - pname: Name of query (ex: PRIVMSG, JOIN, PART)
   - params: Parameters of query (ex: #chan)
   - body: Body of query
   
-
-```int IRC_PrivMSG(IRC_Instance *irc, char *target, char *format, ...);```
+```int IRC_PrivMSG(IRC_Instance *irc, char *target, char *format, ...);```  
   **Parse and send privmsg with a printf like function.**  
   - target: Nick or Channel to send the privmsg.
   - format: printf like format (ex: "hello %s, you are %d years old.")
   
-
 ```int IRC_ParseHost(IRC_Host *irch, char *packet)```  
   **Parse an host like ```deadfood!deadfood@127.0.0.1``` into irch.**  
   - irch: IRC_Host structure pointer, where parsing will be stored.
   - packet: Host to paste.
   
-
 ### Internal/Low level functions:
+  
 ```int IRC_RecvPacket(IRC_Instance *irc, char **packet)```  
   **Receive the packet and store it in packet**  
   
-
 ```int IRC_SendPacket(IRC_Instance *irc, char *packet)```  
   **Send the packet stored in packet**  
   
@@ -111,7 +107,6 @@ host="127.0.0.1"
 ```int IRC_ResolveHostname(char *host, char *addrstr)```  
   **Resolve host and strcpy it in addrstr.**  
   
-
 ## example.c:
 ```
 #include <stdio.h>
